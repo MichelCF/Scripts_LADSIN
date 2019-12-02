@@ -13,24 +13,24 @@ def plot_ciclones(ciclone):
         print(posicao1,posicao2)
     
         if i == 0:
-            frist_lat, frist_lon = posicao1.Latitude, posicao1.Longitude
-            second_lat, second_lon = posicao2.Latitude, posicao2.Longitude
-            plt.plot([frist_lon, second_lon], [frist_lat, second_lat],
+            posicao1_lat, posicao1_lon = posicao1.Latitude, posicao1.Longitude
+            posicao2_lat, posicao2_lon = posicao2.Latitude, posicao2.Longitude
+            plt.plot([posicao1_lon, posicao2_lon], [posicao1_lat, posicao2_lat],
                      color='black',marker='o',linewidth=0.3,
                      transform=ccrs.PlateCarree()
                      )
         else:
             if i == len(ciclone)-2:
-                frist_lat, frist_lon = posicao1.Latitude, posicao1.Longitude
-                second_lat, second_lon = posicao2.Latitude, posicao2.Longitude
-                plt.plot([frist_lon, second_lon], [frist_lat, second_lat],
+                posicao1_lat, posicao1_lon = posicao1.Latitude, posicao1.Longitude
+                posicao2_lat, posicao2_lon = posicao2.Latitude, posicao2.Longitude
+                plt.plot([posicao1_lon, posicao2_lon], [posicao1_lat, posicao2_lat],
                      color='green',marker='o',linewidth=0.3,
                      transform=ccrs.PlateCarree()
                      )
             else:
-                frist_lat, frist_lon = posicao1.Latitude, posicao1.Longitude
-                second_lat, second_lon = posicao2.Latitude, posicao2.Longitude
-                plt.plot([frist_lon, second_lon], [frist_lat, second_lat],
+                posicao1, posicao1 = posicao1.Latitude, posicao1.Longitude
+                posicao2_lat, posicao2_lon = posicao2.Latitude, posicao2.Longitude
+                plt.plot([posicao1_lon, posicao2_lon], [posicao1_lat, posicao2_lat],
                      color='red',linewidth=0.3,
                      transform=ccrs.PlateCarree()
                      )
@@ -58,7 +58,6 @@ else:
     ciclones = list(input().split(","))
     for Ciclone in ciclones:
         n_ciclone = data[(data.N_do_Ciclone == int(Ciclone))].copy()
-        print(n_ciclone)
         plot_ciclones(n_ciclone)
     
 plt.show()
